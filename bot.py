@@ -52,6 +52,15 @@ class MyClient(discord.Client):
             else:
                 return
 
+        if 'so bad' in message.content.lower():
+            await message.add_reaction('🔥')
+
+        if 'so so bad' in message.content.lower():
+            if message.mentions:
+                personToTag = message.mentions[0].mention
+                await message.add_reaction('🔥')
+                await message.channel.send(f'{personToTag} so bad LMFAO 😂')
+
         if ('boil him' in message.content.lower()
                 or 'boil her' in message.content.lower()) and message.mentions:
             brazen_bull_channel = await self.get_or_create_brazen_bull_channel(
